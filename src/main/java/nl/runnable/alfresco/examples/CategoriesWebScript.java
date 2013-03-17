@@ -32,9 +32,7 @@ import org.springframework.extensions.webscripts.WebScriptResponse;
  * <p>
  * The {@link ManagedBean} annotation causes this class to be instantiated by Spring's component scanning. The
  * {@link WebScript} annotation marks it as an annotated Web Script for Dynamic Extensions to further decorate with
- * request handling logic. Both annotations need to be present for a Web Script to work! (Technically you can also
- * configure Spring to consider {@link WebScript} annotated classes to be managed beans, obviating the need for
- * {@link ManagedBean}, but this is NOT recommended practice.)
+ * request handling logic.
  * 
  * @author Laurens Fridael
  * 
