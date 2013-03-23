@@ -96,23 +96,12 @@ public class HelloWebScript {
 	}
 
 	/**
-	 * Obtains Illustrates request handling using {@link Attribute}.
-	 * 
-	 * @param name
-	 * @param response
-	 * @throws IOException
-	 */
-	@Uri("/dynamic-extensions/examples/hello-attribute")
-	public void handleHelloAttribute(@Attribute final String name, final WebScriptResponse response) throws IOException {
-		final String message = String.format("Hello, %s", name);
-		response.getWriter().write(message);
-	}
-
-	/**
 	 * Methods annotated with {@link Attribute} provide reference data for arguments in {@link Uri} handling methods.
 	 * These metho arguments must be annotated with {@link Attribute} as well.
 	 * <p>
 	 * In this case, the method provides a String attribute named 'name'.
+	 * 
+	 * @see #handleHelloAttribute(String, WebScriptResponse)
 	 * 
 	 * @param request
 	 * @return
@@ -120,6 +109,20 @@ public class HelloWebScript {
 	@Attribute
 	protected String getName(final WebScriptRequest request) {
 		return request.getParameter("name");
+	}
+
+	/**
+	 * Illustrates request handling using {@link Attribute}.
+	 * 
+	 * @param name
+	 * @param response
+	 * @throws IOException
+	 * @see {@link #getName(WebScriptRequest)}
+	 */
+	@Uri("/dynamic-extensions/examples/hello-attribute")
+	public void handleHelloAttribute(@Attribute final String name, final WebScriptResponse response) throws IOException {
+		final String message = String.format("Hello, %s", name);
+		response.getWriter().write(message);
 	}
 
 	/**
