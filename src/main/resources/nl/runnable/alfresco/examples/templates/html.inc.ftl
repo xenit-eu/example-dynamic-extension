@@ -3,7 +3,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="${url.context}/css/dynamic-extensions/bootstrap/css/bootstrap.min.css"/>
+    <style type="text/css">
+      <#include "../stylesheets/bootstrap.min.css" />
+    </style>
     <title>${title}</title>
   </head>
   <body>

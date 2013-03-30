@@ -26,6 +26,7 @@
 		-->
     <alfresco-api.version>4.0.e</alfresco-api.version>
     <spring-webscripts.version>1.2.0-M3</spring-webscripts.version>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <!-- 
     Dynamic Extensions typically only have 'provided' dependencies.

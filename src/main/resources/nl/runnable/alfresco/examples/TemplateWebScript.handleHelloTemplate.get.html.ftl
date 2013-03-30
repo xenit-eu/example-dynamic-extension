@@ -1,4 +1,4 @@
-<#import "html.inc.ftl" as html>
+<#import "templates/html.inc.ftl" as html>
 <@html.document title="Hello, ${name}">
   <div class="navbar navbar-inverse navbar-top">
     <div class="navbar-inner">
