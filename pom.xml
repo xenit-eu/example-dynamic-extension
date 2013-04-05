@@ -8,6 +8,7 @@
   <artifactId>example-dynamic-extension</artifactId>
   <version>1.0.1-SNAPSHOT</version>
   <name>Example Dynamic Extension</name>
+  <description>Example Dynamic Extensions. https://github.com/lfridael/example-dynamic-extension</description>
   <!--
 	  Dynamic Extensions are packaged as OSGi bundles. 
 	  An OSGi bundle is a JAR with OSGi headers in META-INF/MANIFEST.MF. 
