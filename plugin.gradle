@@ -1,0 +1,29 @@
+/* 
+
+1) Copy this file to your project directory.
+
+2) In 'build.gradle' import this file as follows:
+
+buildscript {
+  apply from: 'plugin.gradle'
+}
+
+3) Then enable the plugin:
+
+apply plugin: 'alfresco-dynamic-extension'
+
+*/
+project.buildscript {
+  repositories {
+    /* To obtain the gradle-plugin from the local Maven repo, uncomment the lines below: */
+    //maven {
+    //  url mavenLocal().toString()
+    //}
+    maven {
+      url 'https://raw.github.com/lfridael/dynamic-extensions-for-alfresco/mvn-repo/'
+    }
+  }
+  dependencies {
+    classpath group: 'nl.runnable.alfresco.dynamicextensions', name: 'gradle-plugin', version: '1.0.0.M5-SNAPSHOT'
+  }
+}

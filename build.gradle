@@ -1,0 +1,7 @@
+buildscript {
+  apply from: 'plugin.gradle'
+}
+apply plugin: 'alfresco-dynamic-extension'
+
+description = "Example Dynamic Extension"
+version = '1.0.0-SNAPSHOT'

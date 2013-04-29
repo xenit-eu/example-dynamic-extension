@@ -1,16 +1,19 @@
 Example Dynamic Extension
 =========================
 
-This project contains an example Dynamic Extension for Alfresco.  
+About this project
+------------------
 
-More info: <a href="https://github.com/lfridael/dynamic-extensions-for-alfresco">Dynamic Extensions for Alfresco</a>.
+This project illustrates the use of <a href="https://github.com/lfridael/dynamic-extensions-for-alfresco">Dynamic Extensions for Alfresco</a>. Dynamic Extensions brings rapid development of Java repository extensions extensions to Alfresco. This project contains example Web Scripts, Actions and Behaviours.
 
-Building
---------
+Building using Gradle
+---------------------
 
-This is a Maven project.
+Build this project using <a href="http://www.gradle.org/">Gradle</a>:
 
-```bash
-mvn install
-cp target/example-dynamic-extension-<version>.jar /dynamic-extensions/deployment/directory
 ```
+gradle build
+```
+
+This creates a JAR in `build/libs` ready to be hot-deployed to an Alfresco repository with Dynamic Extensions enabled.
+

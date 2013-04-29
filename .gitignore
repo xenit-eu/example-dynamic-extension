@@ -1,7 +1,7 @@
 .classpath
 .settings
 .project
+.gradle
 *.sh
 *.bat
-target
-tmp
+build
