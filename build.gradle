@@ -1,7 +1,22 @@
 buildscript {
-  apply from: 'plugin.gradle'
+  repositories {
+    maven {
+      url 'https://raw.github.com/lfridael/dynamic-extensions-for-alfresco/mvn-repo/'
+    }
+  }
+  dependencies {
+    classpath group: 'nl.runnable.alfresco.dynamicextensions', name: 'gradle-plugin', version: '1.0.0.M5-SNAPSHOT'
+  }
 }
 apply plugin: 'alfresco-dynamic-extension'
 
-description = "Example Dynamic Extension"
-version = '1.0.0-SNAPSHOT'
+version = '1.0.SNAPSHOT'
+bundle.name = 'Example Dynamic Extension'
+bundle.description = 'Example Web Scripts, Actions and Behaviours.'
+
+installBundle {
+  // Install the bundle through the Dynamic Extensions REST API
+  toRepository(username: username, password: password)
+  // To pass the username/password through the command-line:
+  // gradle installBundle -Pusername=... -Ppassword...
+}
