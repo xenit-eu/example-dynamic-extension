@@ -7,14 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javax.annotation.ManagedBean;
-import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import nl.runnable.alfresco.webscripts.annotations.Uri;
 import nl.runnable.alfresco.webscripts.annotations.WebScript;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.extensions.webscripts.WebScriptResponse;
+import org.springframework.stereotype.Component;
 
 /**
  * Web Script that illustrates access to the repository database using SQL.
@@ -22,11 +22,11 @@ import org.springframework.extensions.webscripts.WebScriptResponse;
  * @author Laurens Fridael
  * 
  */
-@ManagedBean
+@Component
 @WebScript
 public class ExampleSqlWebScript {
 
-	@Inject
+	@Autowired
 	private DataSource dataSource;
 
 	@Uri("/dynamic-extensions/examples/sql")

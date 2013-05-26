@@ -2,9 +2,6 @@ package nl.runnable.alfresco.examples;
 
 import java.io.IOException;
 
-import javax.annotation.ManagedBean;
-import javax.inject.Inject;
-
 import nl.runnable.alfresco.webscripts.annotations.RequestParam;
 import nl.runnable.alfresco.webscripts.annotations.Uri;
 import nl.runnable.alfresco.webscripts.annotations.WebScript;
@@ -12,7 +9,9 @@ import nl.runnable.alfresco.webscripts.annotations.WebScript;
 import org.alfresco.service.cmr.action.Action;
 import org.alfresco.service.cmr.action.ActionService;
 import org.alfresco.service.cmr.repository.NodeRef;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.extensions.webscripts.WebScriptResponse;
+import org.springframework.stereotype.Component;
 
 /**
  * This Web Script executes the Action named {@link ExampleActions#SET_DESCRIPTION_ACTION}, which maps to the
@@ -21,11 +20,11 @@ import org.springframework.extensions.webscripts.WebScriptResponse;
  * @author Laurens Fridael
  * 
  */
-@ManagedBean
+@Component
 @WebScript
 public class SetDescriptionWebScript {
 
-	@Inject
+	@Autowired
 	private ActionService actionService;
 
 	@Uri("/dynamic-extensions/examples/set-description")

@@ -1,11 +1,10 @@
 package nl.runnable.alfresco.examples;
 
-import javax.annotation.ManagedBean;
-import javax.inject.Inject;
-
 import nl.runnable.alfresco.annotations.AlfrescoPlatform;
 
 import org.alfresco.repo.bulkimport.BulkFilesystemImporter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * This bean will only be instantiated on Alfresco 4.0.
@@ -13,14 +12,14 @@ import org.alfresco.repo.bulkimport.BulkFilesystemImporter;
  * @author Laurens Fridael
  * 
  */
-@ManagedBean
+@Component
 @AlfrescoPlatform(minVersion = "4.0")
 public class Alfresco4SpecificBean {
 
 	/**
 	 * {@link BulkFilesystemImporter} is specific to Alfresco 4.0 API.
 	 */
-	@Inject
+	@Autowired
 	private BulkFilesystemImporter bulkFilesystemImporter;
 
 }

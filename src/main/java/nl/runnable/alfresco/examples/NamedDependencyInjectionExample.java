@@ -2,9 +2,7 @@ package nl.runnable.alfresco.examples;
 
 import java.io.IOException;
 
-import javax.annotation.ManagedBean;
-import javax.inject.Inject;
-import javax.inject.Named;
+import javax.annotation.Resource;
 
 import nl.runnable.alfresco.webscripts.annotations.Uri;
 import nl.runnable.alfresco.webscripts.annotations.WebScript;
@@ -13,9 +11,10 @@ import org.alfresco.repo.transaction.RetryingTransactionHelper;
 import org.alfresco.repo.transaction.RetryingTransactionHelper.RetryingTransactionCallback;
 import org.springframework.context.ApplicationContext;
 import org.springframework.extensions.webscripts.WebScriptResponse;
+import org.springframework.stereotype.Component;
 
 /**
- * Example that illustrates injecting dependencies from the Alfresco {@link ApplicationContext} by name.
+ * Example that illustrates injecting dependencies from the Alfresco ApplicationContext by name.
  * <p>
  * Normally dependencies are injected by interface type. However, some specialized use cases call for injecting
  * dependencies on specific beans from the Alfresco application context. In this case you can refer to them explicitly
@@ -28,32 +27,31 @@ import org.springframework.extensions.webscripts.WebScriptResponse;
  * @author Laurens Fridael
  * 
  */
-@ManagedBean
+@Component
 @WebScript
 public class NamedDependencyInjectionExample {
 
-	/**
-	 * Inject a named bean from the Alfresco main {@link ApplicationContext} using the {@link Named} annotation.
-	 * <p>
-	 * In this case we are looking for the {@link RetryingTransactionHelper} named
-	 * <code>web.retryingTransactionHelper</code> defined in <code>alfresco/core-services-context.xml</code>.
-	 */
-	@Inject
-	@Named("web.retryingTransactionHelper")
-	private RetryingTransactionHelper retryingTransactionHelper;
+  /**
+   * Inject a named bean from the Alfresco main ApplicationContext using the {@link Resource} annotation.
+   * <p>
+   * In this case we are looking for the {@link RetryingTransactionHelper} named
+   * <code>web.retryingTransactionHelper</code> defined in <code>alfresco/core-services-context.xml</code>.
+   */
+  @Resource(name = "web.retryingTransactionHelper")
+  private RetryingTransactionHelper retryingTransactionHelper;
 
-	@Uri("/dynamic-extensions/examples/transaction")
-	public void transaction(final WebScriptResponse response) throws IOException {
-		performReadonlyTransaction();
-		response.getWriter().write("Performed a read-only transaction operation.");
-	}
+  @Uri("/dynamic-extensions/examples/transaction")
+  public void transaction(final WebScriptResponse response) throws IOException {
+    performReadonlyTransaction();
+    response.getWriter().write("Performed a read-only transaction operation.");
+  }
 
-	private void performReadonlyTransaction() {
-		retryingTransactionHelper.doInTransaction(new RetryingTransactionCallback<Void>() {
+  private void performReadonlyTransaction() {
+    retryingTransactionHelper.doInTransaction(new RetryingTransactionCallback<Void>() {
 
-			public Void execute() throws Throwable {
-				return null;
-			}
-		}, true, true);
-	}
+      public Void execute() throws Throwable {
+        return null;
+      }
+    }, true, true);
+  }
 }

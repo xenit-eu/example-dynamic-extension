@@ -3,8 +3,6 @@ package nl.runnable.alfresco.examples;
 import java.io.Serializable;
 import java.util.Map;
 
-import javax.annotation.ManagedBean;
-
 import nl.runnable.alfresco.behaviours.annotations.AssociationPolicy;
 import nl.runnable.alfresco.behaviours.annotations.Behaviour;
 import nl.runnable.alfresco.behaviours.annotations.ClassPolicy;
@@ -15,8 +13,9 @@ import org.alfresco.repo.node.NodeServicePolicies.OnUpdatePropertiesPolicy;
 import org.alfresco.service.cmr.repository.ChildAssociationRef;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.namespace.QName;
+import org.springframework.stereotype.Component;
 
-@ManagedBean
+@Component
 @Behaviour(value = { "cm:content", "cm:folder" }, event = Event.COMMIT)
 public class ExampleBehaviour implements OnUpdatePropertiesPolicy, OnCreateChildAssociationPolicy {
 

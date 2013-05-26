@@ -2,9 +2,6 @@ package nl.runnable.alfresco.examples;
 
 import java.util.Collection;
 
-import javax.annotation.ManagedBean;
-import javax.inject.Inject;
-
 import nl.runnable.alfresco.actions.annotations.ActionMethod;
 import nl.runnable.alfresco.actions.annotations.ActionParam;
 
@@ -13,6 +10,8 @@ import org.alfresco.service.cmr.action.Action;
 import org.alfresco.service.cmr.dictionary.DataTypeDefinition;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * This class demonstrates annotation-based Actions.
@@ -23,7 +22,7 @@ import org.alfresco.service.cmr.repository.NodeService;
  * @author Laurens Fridael
  * 
  */
-@ManagedBean
+@Component
 public class ExampleActions {
 
 	/**
@@ -37,7 +36,7 @@ public class ExampleActions {
 	/**
 	 * Dependency injection is explained in the {@link CategoriesWebScript} JavaDoc.
 	 */
-	@Inject
+	@Autowired
 	private NodeService nodeService;
 
 	/**

@@ -1,22 +1,33 @@
 buildscript {
-  repositories {
-    maven {
-      url 'https://raw.github.com/lfridael/dynamic-extensions-for-alfresco/mvn-repo/'
-    }
-  }
+  repositories { maven { url 'https://raw.github.com/lfridael/dynamic-extensions-for-alfresco/mvn-repo/' } }
   dependencies {
-    classpath group: 'nl.runnable.alfresco.dynamicextensions', name: 'gradle-plugin', version: '1.0.0.M5-SNAPSHOT'
+    classpath group: 'nl.runnable.alfresco.dynamicextensions', name: 'gradle-plugin', version: '1.0.0.M5'
   }
 }
 apply plugin: 'alfresco-dynamic-extension'
 
+project.description = 'Example Web Scripts, Actions and Behaviours.'
+
 version = '1.0.SNAPSHOT'
-bundle.name = 'Example Dynamic Extension'
-bundle.description = 'Example Web Scripts, Actions and Behaviours.'
+
+dependencies {
+  compile 'javax.servlet:servlet-api:2.5'
+  compile('org.springframework:spring-context:3.0.0.RELEASE') { transitive = false }
+  compile('org.springframework:spring-beans:3.0.0.RELEASE') { transitive = false }
+  compile('javax.annotation:jsr250-api:1.0')
+}
+
+jar {
+  manifest {
+    instructionReplace 'Bundle-Name', 'Example Dynamic Extension'
+    instruction 'Bundle-Description', project.description
+    instruction 'Bundle-DocURL', 'https://github.com/lfridael/example-dynamic-extension'
+  }
+}
 
 installBundle {
   // Install the bundle through the Dynamic Extensions REST API
-  toRepository(username: username, password: password)
+  toRepository username: username, password: password
   // To pass the username/password through the command-line:
   // gradle installBundle -Pusername=... -Ppassword...
 }

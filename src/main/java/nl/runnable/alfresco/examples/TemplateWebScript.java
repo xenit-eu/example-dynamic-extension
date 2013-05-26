@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.ManagedBean;
-
 import nl.runnable.alfresco.webscripts.annotations.HttpMethod;
 import nl.runnable.alfresco.webscripts.annotations.RequestParam;
 import nl.runnable.alfresco.webscripts.annotations.Uri;
@@ -15,6 +13,7 @@ import org.alfresco.service.cmr.repository.TemplateProcessor;
 import org.springframework.extensions.webscripts.DeclarativeWebScript;
 import org.springframework.extensions.webscripts.TemplateProcessorRegistry;
 import org.springframework.extensions.webscripts.WebScriptResponse;
+import org.springframework.stereotype.Component;
 
 /**
  * Illustrates the use of Freemarker templates with annotation-based Web Scripts, using the
@@ -47,7 +46,7 @@ import org.springframework.extensions.webscripts.WebScriptResponse;
  * 
  * @author Laurens Fridael
  */
-@ManagedBean
+@Component
 @WebScript
 public class TemplateWebScript {
 
