@@ -1,7 +1,7 @@
 buildscript {
-  repositories { maven { url 'https://raw.github.com/lfridael/dynamic-extensions-for-alfresco/mvn-repo/' } }
+  repositories { mavenLocal() }
   dependencies {
-    classpath group: 'nl.runnable.alfresco.dynamicextensions', name: 'gradle-plugin', version: '1.0.0.M5'
+    classpath group: 'nl.runnable.alfresco.dynamicextensions', name: 'gradle-plugin', version: '1.0.0.M6-SNAPSHOT'
   }
 }
 apply plugin: 'alfresco-dynamic-extension'
@@ -12,9 +12,6 @@ version = '1.0.SNAPSHOT'
 
 dependencies {
   compile 'javax.servlet:servlet-api:2.5'
-  compile('org.springframework:spring-context:3.0.0.RELEASE') { transitive = false }
-  compile('org.springframework:spring-beans:3.0.0.RELEASE') { transitive = false }
-  compile('javax.annotation:jsr250-api:1.0')
 }
 
 jar {
