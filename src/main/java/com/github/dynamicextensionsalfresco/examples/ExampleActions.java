@@ -1,9 +1,9 @@
-package nl.runnable.alfresco.examples;
+package com.github.dynamicextensionsalfresco.examples;
 
 import java.util.Collection;
 
-import nl.runnable.alfresco.actions.annotations.ActionMethod;
-import nl.runnable.alfresco.actions.annotations.ActionParam;
+import com.github.dynamicextensionsalfresco.actions.annotations.ActionMethod;
+import com.github.dynamicextensionsalfresco.actions.annotations.ActionParam;
 
 import org.alfresco.model.ContentModel;
 import org.alfresco.service.cmr.action.Action;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 /**
  * This class demonstrates annotation-based Actions.
  * <p>
- * As with annotated-based WebScripts and Behaviours, you need to annotate the class with {@link ManagedBean} for Spring
+ * As with annotated-based WebScripts and Behaviours, you need to annotate the class with {@link Component} for Spring
  * to instantiate it automatically.
  * 
  * @author Laurens Fridael

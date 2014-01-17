@@ -1,10 +1,10 @@
-package nl.runnable.alfresco.examples;
+package com.github.dynamicextensionsalfresco.examples;
 
 import java.io.IOException;
 
-import nl.runnable.alfresco.webscripts.annotations.RequestParam;
-import nl.runnable.alfresco.webscripts.annotations.Uri;
-import nl.runnable.alfresco.webscripts.annotations.WebScript;
+import com.github.dynamicextensionsalfresco.webscripts.annotations.RequestParam;
+import com.github.dynamicextensionsalfresco.webscripts.annotations.Uri;
+import com.github.dynamicextensionsalfresco.webscripts.annotations.WebScript;
 
 import org.alfresco.service.cmr.action.Action;
 import org.alfresco.service.cmr.action.ActionService;

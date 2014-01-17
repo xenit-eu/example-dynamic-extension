@@ -1,11 +1,11 @@
-package nl.runnable.alfresco.examples;
+package com.github.dynamicextensionsalfresco.examples;
 
 import java.io.IOException;
 
 import javax.annotation.Resource;
 
-import nl.runnable.alfresco.webscripts.annotations.Uri;
-import nl.runnable.alfresco.webscripts.annotations.WebScript;
+import com.github.dynamicextensionsalfresco.webscripts.annotations.Uri;
+import com.github.dynamicextensionsalfresco.webscripts.annotations.WebScript;
 
 import org.alfresco.repo.transaction.RetryingTransactionHelper;
 import org.alfresco.repo.transaction.RetryingTransactionHelper.RetryingTransactionCallback;
@@ -32,7 +32,7 @@ import org.springframework.stereotype.Component;
 public class NamedDependencyInjectionExample {
 
   /**
-   * Inject a named bean from the Alfresco main ApplicationContext using the {@link Resource} annotation.
+   * Autowired a named bean from the Alfresco main ApplicationContext using the {@link Resource} annotation.
    * <p>
    * In this case we are looking for the {@link RetryingTransactionHelper} named
    * <code>web.retryingTransactionHelper</code> defined in <code>alfresco/core-services-context.xml</code>.

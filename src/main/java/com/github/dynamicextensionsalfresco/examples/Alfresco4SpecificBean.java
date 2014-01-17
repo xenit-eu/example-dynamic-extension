@@ -1,6 +1,6 @@
-package nl.runnable.alfresco.examples;
+package com.github.dynamicextensionsalfresco.examples;
 
-import nl.runnable.alfresco.annotations.AlfrescoPlatform;
+import com.github.dynamicextensionsalfresco.annotations.AlfrescoPlatform;
 
 import org.alfresco.repo.bulkimport.BulkFilesystemImporter;
 import org.springframework.beans.factory.annotation.Autowired;

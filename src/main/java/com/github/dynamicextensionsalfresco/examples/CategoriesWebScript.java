@@ -1,4 +1,4 @@
-package nl.runnable.alfresco.examples;
+package com.github.dynamicextensionsalfresco.examples;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -6,10 +6,10 @@ import java.util.Collection;
 
 import javax.annotation.Resource;
 
-import nl.runnable.alfresco.annotations.AlfrescoService;
-import nl.runnable.alfresco.annotations.ServiceType;
-import nl.runnable.alfresco.webscripts.annotations.Uri;
-import nl.runnable.alfresco.webscripts.annotations.WebScript;
+import com.github.dynamicextensionsalfresco.annotations.AlfrescoService;
+import com.github.dynamicextensionsalfresco.annotations.ServiceType;
+import com.github.dynamicextensionsalfresco.webscripts.annotations.Uri;
+import com.github.dynamicextensionsalfresco.webscripts.annotations.WebScript;
 
 import org.alfresco.model.ContentModel;
 import org.alfresco.service.cmr.repository.ChildAssociationRef;
@@ -30,7 +30,7 @@ import org.springframework.stereotype.Component;
  * This class illustrates Web Script request handling and how to obtain Alfresco service dependencies, such as
  * {@link CategoryService} and {@link NodeService}.
  * <p>
- * The {@link ManagedBean} annotation causes this class to be instantiated by Spring's component scanning. The
+ * The {@link Component} annotation causes this class to be instantiated by Spring's component scanning. The
  * {@link WebScript} annotation marks it as an annotated Web Script for Dynamic Extensions to further decorate with
  * request handling logic.
  * 
@@ -42,7 +42,7 @@ import org.springframework.stereotype.Component;
 public class CategoriesWebScript {
 
   /**
-   * Annotate dependencies with {@link Inject} to obtain references to Alfresco services. This is how you'd normally
+   * Annotate dependencies with {@link Autowired} to obtain references to Alfresco services. This is how you'd normally
    * inject dependencies in a Spring application. There is nothing specific to Dynamic Extensions about this style of
    * dependency injection.
    * <p>

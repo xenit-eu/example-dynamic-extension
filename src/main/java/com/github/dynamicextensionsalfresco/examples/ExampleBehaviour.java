@@ -1,12 +1,12 @@
-package nl.runnable.alfresco.examples;
+package com.github.dynamicextensionsalfresco.examples;
 
 import java.io.Serializable;
 import java.util.Map;
 
-import nl.runnable.alfresco.behaviours.annotations.AssociationPolicy;
-import nl.runnable.alfresco.behaviours.annotations.Behaviour;
-import nl.runnable.alfresco.behaviours.annotations.ClassPolicy;
-import nl.runnable.alfresco.behaviours.annotations.Event;
+import com.github.dynamicextensionsalfresco.behaviours.annotations.AssociationPolicy;
+import com.github.dynamicextensionsalfresco.behaviours.annotations.Behaviour;
+import com.github.dynamicextensionsalfresco.behaviours.annotations.ClassPolicy;
+import com.github.dynamicextensionsalfresco.behaviours.annotations.Event;
 
 import org.alfresco.repo.node.NodeServicePolicies.OnCreateChildAssociationPolicy;
 import org.alfresco.repo.node.NodeServicePolicies.OnUpdatePropertiesPolicy;

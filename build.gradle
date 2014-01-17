@@ -1,7 +1,7 @@
 buildscript {
   repositories { maven { url 'https://raw.github.com/lfridael/dynamic-extensions-for-alfresco/mvn-repo/' } }
   dependencies {
-    classpath group: 'nl.runnable.alfresco.dynamicextensions', name: 'gradle-plugin', version: '1.0.0-SNAPSHOT'
+    classpath group: 'com.github.dynamicextensionsalfresco', name: 'gradle-plugin', version: '1.0.0-SNAPSHOT'
   }
 }
 apply plugin: 'alfresco-dynamic-extension'
@@ -22,7 +22,7 @@ jar {
     instructionReplace 'Bundle-Name', 'Example Dynamic Extension'
     instruction 'Bundle-Description', project.description
     instruction 'Bundle-DocURL', 'https://github.com/lfridael/example-dynamic-extension'
-    instruction 'Alfresco-Spring-Configuration', 'nl.runnable.alfresco.examples' // optional
+    instruction 'Alfresco-Spring-Configuration', 'com.github.dynamicextensionsalfresco.examples' // optional
   }
 }
 

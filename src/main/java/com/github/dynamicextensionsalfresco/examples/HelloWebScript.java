@@ -1,13 +1,13 @@
-package nl.runnable.alfresco.examples;
+package com.github.dynamicextensionsalfresco.examples;
 
 import java.io.IOException;
 import java.util.Arrays;
 
-import nl.runnable.alfresco.webscripts.annotations.Attribute;
-import nl.runnable.alfresco.webscripts.annotations.RequestParam;
-import nl.runnable.alfresco.webscripts.annotations.Uri;
-import nl.runnable.alfresco.webscripts.annotations.UriVariable;
-import nl.runnable.alfresco.webscripts.annotations.WebScript;
+import com.github.dynamicextensionsalfresco.webscripts.annotations.Attribute;
+import com.github.dynamicextensionsalfresco.webscripts.annotations.RequestParam;
+import com.github.dynamicextensionsalfresco.webscripts.annotations.Uri;
+import com.github.dynamicextensionsalfresco.webscripts.annotations.UriVariable;
+import com.github.dynamicextensionsalfresco.webscripts.annotations.WebScript;
 
 import org.alfresco.service.namespace.QName;
 import org.springframework.extensions.webscripts.WebScriptRequest;
