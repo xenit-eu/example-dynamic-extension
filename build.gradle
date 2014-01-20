@@ -15,6 +15,7 @@ dependencies {
   compile('org.springframework:spring-context:3.0.0.RELEASE') { transitive = false }
   compile('org.springframework:spring-beans:3.0.0.RELEASE') { transitive = false }
   compile('javax.annotation:jsr250-api:1.0')
+  compile("org.activiti:activiti-engine:5.7") {transitive = false}
 }
 
 jar {
