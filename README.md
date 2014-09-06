@@ -17,3 +17,15 @@ gradle build
 
 This creates a JAR in `build/libs` ready to be hot-deployed to an Alfresco repository with Dynamic Extensions enabled.
 
+Run `gradle installBundle` instead to build and deploy live to a running repository.
+
+
+Building using Maven (alternative)
+---------------------
+
+```
+mvn package
+```
+
+This creates a JAR in `target` ready to be hot-deployed to an Alfresco repository with Dynamic Extensions enabled.
+
