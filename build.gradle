@@ -1,35 +1,67 @@
+import com.github.dynamicextensionsalfresco.gradle.tasks.*
+
 buildscript {
-  repositories { maven { url 'https://raw.github.com/laurentvdl/dynamic-extensions-for-alfresco/mvn-repo/' } }
+  repositories { 
+	jcenter()
+  }
   dependencies {
-    classpath group: 'com.github.dynamicextensionsalfresco', name: 'gradle-plugin', version: '1.0.0'
+    classpath(group: 'com.github.dynamicextensionsalfresco', name: 'gradle-plugin', version: '1.1.0')
   }
 }
+
 apply plugin: 'alfresco-dynamic-extension'
+apply plugin: 'idea'
 
 project.description = 'Example Web Scripts, Actions and Behaviours.'
 
-version = '1.0.SNAPSHOT'
+version = '1.1-SNAPSHOT'
+
+configurations {
+    install
+}
+
+ext.alfrescoVersion = '4.2.e'
 
 dependencies {
   compile 'javax.servlet:servlet-api:2.5'
-  compile('org.springframework:spring-context:3.0.0.RELEASE') { transitive = false }
-  compile('org.springframework:spring-beans:3.0.0.RELEASE') { transitive = false }
-  compile('javax.annotation:jsr250-api:1.0')
   compile("org.activiti:activiti-engine:5.7") {transitive = false}
+  compile 'org.json:json:20090211'
+  compile ("org.alfresco:alfresco-core:${alfrescoVersion}")
+  compile ("org.alfresco:alfresco-repository:${alfrescoVersion}") { transitive = false }
+  compile ("org.alfresco:alfresco-data-model:${alfrescoVersion}")
+
+  install 'org.scala-lang:scala-library:2.10.3'
 }
 
 jar {
   manifest {
     instructionReplace 'Bundle-Name', 'Example Dynamic Extension'
     instruction 'Bundle-Description', project.description
-    instruction 'Bundle-DocURL', 'https://github.com/lfridael/example-dynamic-extension'
+    instruction 'Bundle-DocURL', 'https://github.com/laurentvdl/example-dynamic-extension'
     instruction 'Alfresco-Spring-Configuration', 'com.github.dynamicextensionsalfresco.examples' // optional
   }
 }
 
-installBundle {
-  // Install the bundle through the Dynamic Extensions REST API
-  toRepository username: username ?: "admin", password: password ?: "admin"
-  // To pass the username/password through the command-line:
-  // gradle installBundle -Pusername=... -Ppassword...
+// uncomment to override defaults
+
+/*alfrescoDynamicExtensions {
+    repository {
+        endpoint {
+            host = project.hasProperty('hostname') ? project.hostname : 'localhost'
+            port = '8080'
+            serviceUrl = '/alfresco/service'
+        }
+        authentication {
+            username = project.hasProperty('username') ? project.username : 'admin'
+            password = project.hasProperty('password') ? project.password : 'admin'
+        }
+    }
+    versions {
+        dynamicExtensions = '1.1.0'
+        alfresco = '5.0.a'
+    }
+}*/
+
+task installDependencies(type: InstallBundle) {
+    configuration = configurations.install
 }
