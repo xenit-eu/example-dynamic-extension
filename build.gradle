@@ -5,7 +5,7 @@ buildscript {
 	jcenter()
   }
   dependencies {
-    classpath(group: 'com.github.dynamicextensionsalfresco', name: 'gradle-plugin', version: '1.1.0')
+    classpath(group: 'com.github.dynamicextensionsalfresco', name: 'gradle-plugin', version: '1.1.+')
   }
 }
 
