@@ -12,12 +12,13 @@ Building using Gradle
 Build this project using <a href="http://www.gradle.org/">Gradle</a>:
 
 ```
-gradle build
+./gradlew build # nix
+./gradle.bat build # Windows
 ```
 
 This creates a JAR in `build/libs` ready to be hot-deployed to an Alfresco repository with Dynamic Extensions enabled.
 
-Run `gradle installBundle` instead to build and deploy live to a running repository.
+Run `./gradlew installBundle` instead to build and deploy live to a running repository.
 
 
 Building using Maven (alternative)
