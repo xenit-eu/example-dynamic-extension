@@ -9,13 +9,13 @@
         <endEvent id="theEnd"></endEvent>
         <serviceTask id="dynamicServiceTask" name="Dynamic Service Task" activiti:class="com.github.dynamicextensionsalfresco.workflow.activiti.DelegateTask">
             <extensionElements>
-                <activiti:field name="taskId">
+                <activiti:field name="componentId">
                     <activiti:string><![CDATA[example.dynamicextensions.testTask]]></activiti:string>
                 </activiti:field>
             </extensionElements>
         </serviceTask>
         <sequenceFlow id="flow4" sourceRef="start" targetRef="dynamicServiceTask"></sequenceFlow>
-        <userTask id="usertask1" name="User Task" activiti:assignee="administrator" activiti:formKey="wf:activitiReviewTask"></userTask>
+        <userTask id="usertask1" name="User Task" activiti:assignee="admin" activiti:formKey="wf:activitiReviewTask"></userTask>
         <sequenceFlow id="flow5" sourceRef="dynamicServiceTask" targetRef="usertask1"></sequenceFlow>
         <sequenceFlow id="flow6" sourceRef="usertask1" targetRef="theEnd"></sequenceFlow>
     </process>
