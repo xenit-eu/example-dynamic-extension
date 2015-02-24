@@ -38,7 +38,7 @@ jar {
     instructionReplace 'Bundle-Name', 'Example Dynamic Extension'
     instruction 'Bundle-Description', project.description
     instruction 'Bundle-DocURL', 'https://github.com/laurentvdl/example-dynamic-extension'
-    instruction 'Alfresco-Spring-Configuration', 'com.github.dynamicextensionsalfresco.examples' // optional
+    // instruction 'Alfresco-Spring-Configuration', 'com.github.dynamicextensionsalfresco.examples' // optional
   }
 }
 
