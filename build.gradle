@@ -9,6 +9,10 @@ buildscript {
   }
 }
 
+repositories {
+    mavenLocal()
+}
+
 apply plugin: 'alfresco-dynamic-extension'
 apply plugin: 'idea'
 
