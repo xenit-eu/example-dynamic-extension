@@ -15,7 +15,7 @@ import com.github.dynamicextensionsalfresco.jobs.ScheduledQuartzJob;
  * @author Laurent Van der Linden
  */
 @Component
-@ScheduledQuartzJob(name = "test", cron = "0/15 * * * * ?", group = "demo")
+@ScheduledQuartzJob(name = "test", cron = "0 * * * * ?", group = "demo")
 public class ScheduledDummyJob implements Job {
 	private final Logger logger = LoggerFactory.getLogger(ScheduledDummyJob.class);
 

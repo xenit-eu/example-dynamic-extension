@@ -6,7 +6,7 @@
       -->
     <groupId>com.github.dynamicextensionsalfresco</groupId>
     <artifactId>example-dynamic-extension</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.3-SNAPSHOT</version>
     <name>Example Dynamic Extension</name>
     <description>Maven build for example extension</description>
     <!--
@@ -19,12 +19,12 @@
         <!--
               The version should be the latest Dynamic Extensions milestone release.
             -->
-        <dynamicextensions.version>1.1.0</dynamicextensions.version>
+        <dynamicextensions.version>1.3.0</dynamicextensions.version>
         <!--
               Change the Alfresco API and Spring Web Scripts versions if necessary.
             -->
-        <alfresco-api.version>4.2.e</alfresco-api.version>
-        <spring-webscripts.version>1.2.0-M3</spring-webscripts.version>
+        <alfresco-api.version>5.0.d</alfresco-api.version>
+        <spring-webscripts.version>5.0.d</spring-webscripts.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <!--
@@ -60,12 +60,12 @@
 
                 The annotation approach is specific to Dynamic Extensions.
           -->
-        <dependency>
+        <!--<dependency>
             <groupId>com.github.dynamicextensionsalfresco</groupId>
             <artifactId>annotations-runtime</artifactId>
             <version>${dynamicextensions.version}</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency>-->
         <dependency>
             <!--
                   Provides the javax.annotations.ManagedBean annotation.
@@ -97,6 +97,7 @@
                           This header MUST have the value 'true'.
                         -->
                         <Alfresco-Dynamic-Extension>true</Alfresco-Dynamic-Extension>
+                        <DynamicImport-Package>*</DynamicImport-Package>
                     </instructions>
                 </configuration>
             </plugin>
