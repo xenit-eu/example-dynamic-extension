@@ -7,13 +7,7 @@
     <process id="serviceTaskExample" name="Dynamic Extensions ServiceTask workflow sample" isExecutable="true">
         <startEvent id="start" activiti:formKey="wf:submitAdhocTask"></startEvent>
         <endEvent id="theEnd"></endEvent>
-        <serviceTask id="dynamicServiceTask" name="Dynamic Service Task" activiti:class="com.github.dynamicextensionsalfresco.workflow.activiti.DelegateTask">
-            <extensionElements>
-                <activiti:field name="componentId">
-                    <activiti:string><![CDATA[example.dynamicextensions.testTask]]></activiti:string>
-                </activiti:field>
-            </extensionElements>
-        </serviceTask>
+        <serviceTask activiti:delegateExpression="${example.dynamicextensions.testTask}" id="dynamicServiceTask" name="Dynamic Service Task" activiti:class="com.github.dynamicextensionsalfresco.workflow.activiti.DelegateTask"/>
         <sequenceFlow id="flow4" sourceRef="start" targetRef="dynamicServiceTask"></sequenceFlow>
         <userTask id="usertask1" name="User Task" activiti:assignee="admin" activiti:formKey="wf:activitiReviewTask"></userTask>
         <sequenceFlow id="flow5" sourceRef="dynamicServiceTask" targetRef="usertask1"></sequenceFlow>

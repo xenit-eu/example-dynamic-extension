@@ -5,12 +5,8 @@ buildscript {
 	jcenter()
   }
   dependencies {
-    classpath(group: 'com.github.dynamicextensionsalfresco', name: 'gradle-plugin', version: '1.3.+')
+    classpath(group: 'com.github.dynamicextensionsalfresco', name: 'gradle-plugin', version: '1.4.+')
   }
-}
-
-repositories {
-    mavenLocal()
 }
 
 apply plugin: 'alfresco-dynamic-extension'
@@ -18,13 +14,13 @@ apply plugin: 'idea'
 
 project.description = 'Example Web Scripts, Actions and Behaviours.'
 
-version = '1.3-SNAPSHOT'
+version = '1.4-SNAPSHOT'
 
 configurations {
     install
 }
 
-ext.alfrescoVersion = '4.2.e'
+ext.alfrescoVersion = '5.0.d'
 
 dependencies {
   compile 'javax.servlet:servlet-api:2.5'
@@ -38,12 +34,12 @@ dependencies {
 }
 
 jar {
-  manifest {
-    instructionReplace 'Bundle-Name', 'Example Dynamic Extension'
-    instruction 'Bundle-Description', project.description
-    instruction 'Bundle-DocURL', 'https://github.com/laurentvdl/example-dynamic-extension'
-    // instruction 'Alfresco-Spring-Configuration', 'com.github.dynamicextensionsalfresco.examples' // optional
-  }
+    manifest {
+        instructionReplace 'Bundle-Name', 'Example Dynamic Extension'
+        instruction 'Bundle-Description', project.description
+        instruction 'Bundle-DocURL', 'https://github.com/laurentvdl/example-dynamic-extension'
+        // instruction 'Alfresco-Spring-Configuration', 'com.github.dynamicextensionsalfresco.examples' // optional
+    }
 }
 
 // uncomment to override defaults

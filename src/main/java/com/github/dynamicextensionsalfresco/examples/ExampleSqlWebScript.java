@@ -9,6 +9,7 @@ import java.sql.Statement;
 
 import javax.sql.DataSource;
 
+import com.github.dynamicextensionsalfresco.webscripts.annotations.Transaction;
 import com.github.dynamicextensionsalfresco.webscripts.annotations.Uri;
 import com.github.dynamicextensionsalfresco.webscripts.annotations.WebScript;
 
@@ -30,6 +31,7 @@ public class ExampleSqlWebScript {
 	private DataSource dataSource;
 
 	@Uri("/dynamic-extensions/examples/sql")
+	@Transaction(readOnly = true)
 	public void selectCountNodes(final WebScriptResponse response) throws IOException, SQLException {
 		final Writer out = response.getWriter();
 		final Connection connection = dataSource.getConnection();
