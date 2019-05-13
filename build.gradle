@@ -1,20 +1,33 @@
-import com.github.dynamicextensionsalfresco.gradle.tasks.*
+import com.github.dynamicextensionsalfresco.gradle.tasks.InstallBundle
 
 buildscript {
-  repositories { 
-	jcenter()
-  }
-  dependencies {
-    classpath(group: 'com.github.dynamicextensionsalfresco', name: 'gradle-plugin', version: '1.4.+')
-  }
+    repositories {
+        mavenLocal()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath 'eu.xenit.de:gradle-plugin:2.0.0-SNAPSHOT'
+        classpath "eu.xenit.gradle:alfresco-sdk:0.2.0"
+    }
 }
 
-apply plugin: 'alfresco-dynamic-extension'
+// TODO move plugins to plugin block once everything is published to Gradle plugin portal
+
+apply plugin: 'java'
+apply plugin: 'eu.xenit.de'
+apply plugin: 'eu.xenit.alfresco'
 apply plugin: 'idea'
 
 project.description = 'Example Web Scripts, Actions and Behaviours.'
 
-version = '1.4-SNAPSHOT'
+version = '2.0-SNAPSHOT'
+
+repositories {
+    // TODO remove
+    mavenLocal()
+}
 
 configurations {
     install
@@ -23,45 +36,45 @@ configurations {
 ext.alfrescoVersion = '5.0.d'
 
 dependencies {
-  compile 'javax.servlet:servlet-api:2.5'
-  compile("org.activiti:activiti-engine:5.7") {transitive = false}
-  compile 'org.json:json:20090211'
-  compile ("org.alfresco:alfresco-core:${alfrescoVersion}")
-  compile ("org.alfresco:alfresco-repository:${alfrescoVersion}") { transitive = false }
-  compile ("org.alfresco:alfresco-data-model:${alfrescoVersion}")
+    alfrescoProvided "org.springframework.extensions.surf:spring-webscripts:${alfrescoVersion}"
+    alfrescoProvided "org.alfresco:alfresco-data-model:${alfrescoVersion}"
+    alfrescoProvided "org.alfresco:alfresco-repository:${alfrescoVersion}"
 
-  install 'org.scala-lang:scala-library:2.10.3'
+    // Note: SLF4J is already included in Alfresco, this is just included to demonstrate a custom installBundle task
+    install 'org.slf4j:slf4j-api:1.7.26'
 }
 
 jar {
-    manifest {
-        instructionReplace 'Bundle-Name', 'Example Dynamic Extension'
-        instruction 'Bundle-Description', project.description
-        instruction 'Bundle-DocURL', 'https://github.com/laurentvdl/example-dynamic-extension'
-        // instruction 'Alfresco-Spring-Configuration', 'com.github.dynamicextensionsalfresco.examples' // optional
-    }
+    bnd(
+            'Bundle-Name': 'Example Dynamic Extension',
+            'Bundle-Description': project.description,
+            'Bundle-DocURL': 'https://github.com/laurentvdl/example-dynamic-extension'
+    )
 }
 
 // uncomment to override defaults
 
-/*alfrescoDynamicExtensions {
-    repository {
-        endpoint {
-            host = project.hasProperty('hostname') ? project.hostname : 'localhost'
-            port = '8080'
-            serviceUrl = '/alfresco/service'
-        }
-        authentication {
-            username = project.hasProperty('username') ? project.username : 'admin'
-            password = project.hasProperty('password') ? project.password : 'admin'
-        }
-    }
-    versions {
-        dynamicExtensions = '1.1.0'
-        alfresco = '5.0.a'
-    }
-}*/
+//alfrescoDynamicExtensions {
+//    repository {
+//        endpoint {
+//            host = project.hasProperty('hostname') ? project.hostname : 'localhost'
+//            port = '32761'
+//            serviceUrl = '/alfresco/service'
+//        }
+//        authentication {
+//            username = project.hasProperty('username') ? project.username : 'admin'
+//            password = project.hasProperty('password') ? project.password : 'admin'
+//        }
+//    }
+//    versions {
+//        dynamicExtensions = '2.0.0-SNAPSHOT'
+//    }
+//}
 
 task installDependencies(type: InstallBundle) {
-    configuration = configurations.install
+    files = configurations.install
+}
+
+wrapper {
+    gradleVersion = "5.4.1"
 }
