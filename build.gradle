@@ -2,7 +2,9 @@ import com.github.dynamicextensionsalfresco.gradle.tasks.InstallBundle
 
 buildscript {
     repositories {
-        mavenLocal()
+        maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots/'
+        }
         maven {
             url "https://plugins.gradle.org/m2/"
         }
@@ -25,8 +27,10 @@ project.description = 'Example Web Scripts, Actions and Behaviours.'
 version = '2.0-SNAPSHOT'
 
 repositories {
-    // TODO remove
-    mavenLocal()
+    // TODO use mavenLocal() once released
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
 }
 
 configurations {
@@ -48,7 +52,11 @@ jar {
     bnd(
             'Bundle-Name': 'Example Dynamic Extension',
             'Bundle-Description': project.description,
-            'Bundle-DocURL': 'https://github.com/laurentvdl/example-dynamic-extension'
+            'Bundle-DocURL': 'https://github.com/xenit-eu/example-dynamic-extension',
+
+            // 'Public packages' should be in the 'Export-Package' MANIFEST header to be able to use them in other
+            // OSGI bundles
+            'Export-Package': 'com.github.dynamicextensionsalfresco.examples.api'
     )
 }
 
@@ -58,7 +66,7 @@ jar {
 //    repository {
 //        endpoint {
 //            host = project.hasProperty('hostname') ? project.hostname : 'localhost'
-//            port = '32761'
+//            port = '8080'
 //            serviceUrl = '/alfresco/service'
 //        }
 //        authentication {
