@@ -13,6 +13,9 @@ version = '2.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://artifacts.alfresco.com/nexus/content/groups/public/"
+    }
 }
 
 configurations {
