@@ -1,36 +1,18 @@
 import com.github.dynamicextensionsalfresco.gradle.tasks.InstallBundle
 
-buildscript {
-    repositories {
-        maven {
-            url 'https://oss.sonatype.org/content/repositories/snapshots/'
-        }
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-    }
-    dependencies {
-        classpath 'eu.xenit.de:gradle-plugin:2.0.0-SNAPSHOT'
-        classpath "eu.xenit.gradle:alfresco-sdk:0.2.0"
-    }
+plugins {
+    id 'java'
+    id 'idea'
+    id "eu.xenit.de" version "2.0.0"
+    id "eu.xenit.alfresco" version "0.2.0"
 }
-
-// TODO move plugins to plugin block once everything is published to Gradle plugin portal
-
-apply plugin: 'java'
-apply plugin: 'eu.xenit.de'
-apply plugin: 'eu.xenit.alfresco'
-apply plugin: 'idea'
 
 project.description = 'Example Web Scripts, Actions and Behaviours.'
 
 version = '2.0-SNAPSHOT'
 
 repositories {
-    // TODO use mavenLocal() once released
-    maven {
-        url 'https://oss.sonatype.org/content/repositories/snapshots/'
-    }
+    mavenCentral()
 }
 
 configurations {
