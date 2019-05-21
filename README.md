@@ -1,6 +1,8 @@
 Example Dynamic Extension
 =========================
 
+[![Build Status](https://travis-ci.org/xenit-eu/example-dynamic-extension.svg)](https://travis-ci.org/xenit-eu/example-dynamic-extension)
+
 About this project
 ------------------
 
