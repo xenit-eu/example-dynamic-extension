@@ -1,5 +1,13 @@
 import com.github.dynamicextensionsalfresco.gradle.tasks.InstallBundle
 
+buildscript {
+    repositories {
+        // Workaround for #258
+        // https://github.com/xenit-eu/dynamic-extensions-for-alfresco/issues/258
+        mavenCentral()
+    }
+}
+
 plugins {
     id 'java'
     id 'idea'
