@@ -5,8 +5,12 @@ plugins {
     id 'idea'
 
     // Plugin used to be able to use the 'alfrescoProvided' dependency scope. 
-    // See: https://github.com/xenit-eu/alfresco-gradle-sdk 
+    // See: https://github.com/xenit-eu/alfresco-gradle-sdk#the-euxenitalfresco-plugin
     id "eu.xenit.alfresco" version "0.2.0"
+
+    // Plugin used to assemble the project into an Alfresco Module Package
+    // See: https://github.com/xenit-eu/alfresco-gradle-sdk#the-euxenitamp-plugin
+    id "eu.xenit.amp" version "0.2.0"
 
     // The Dynamic Extensions Gradle plugin
     // See: https://github.com/xenit-eu/dynamic-extensions-for-alfresco/blob/master/documentation/Gradle_Plugin.md
