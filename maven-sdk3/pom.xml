@@ -5,9 +5,9 @@
     <groupId>eu.xenit.de</groupId>
     <artifactId>example-dynamic-extensions-module</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>example-dynamic-extensions-module Platform Jar Module - SDK 3</name>
-    <description>Platform JAR Module (to be included in the alfresco.war) - SDK 3</description>
-    <packaging>jar</packaging>
+    <name>example-dynamic-extensions-module - Alfresco Maven SDK 3</name>
+    <description>Dynamic Extensions example customization project - Using the Alfresco Maven SDK version 3</description>
+    <packaging>bundle</packaging>
 
     <properties>
         <!-- Dynamic Extensions versions -->
@@ -70,6 +70,21 @@
     </dependencyManagement>
 
     <dependencies>
+        <!-- Dynamic Extensions dependencies required to compile custom bundles -->
+        <dependency>
+            <groupId>eu.xenit.de</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${dynamic.extensions.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>eu.xenit.de</groupId>
+            <artifactId>webscripts</artifactId>
+            <version>${dynamic.extensions.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Alfresco dependencies -->
         <dependency>
             <groupId>${alfresco.groupId}</groupId>
             <artifactId>alfresco-repository</artifactId>
@@ -88,7 +103,35 @@
     </dependencies>
 
     <build>
+        <sourceDirectory>../src/main/java</sourceDirectory>
         <plugins>
+            <!--
+                Plugin to turn the project's jar artifact into a OSGi Dynamic Extensions bundle
+
+                Have a look at the detailed documentation of the bundle plugin for more information:
+                https://felix.apache.org/documentation/subprojects/apache-felix-maven-bundle-plugin-bnd.html
+                -->
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>4.2.0</version>
+                <!-- This option enables custom bundle headers in the <instructions> -->
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <!-- Make sure Dynamic Extensions functionalities are enabled in the bundle -->
+                        <Alfresco-Dynamic-Extension>true</Alfresco-Dynamic-Extension>
+                        <!-- Indicate which packages should be scanned for Spring components -->
+                        <Alfresco-Spring-Configuration>com.github.dynamicextensionsalfresco.examples</Alfresco-Spring-Configuration>
+
+                        <!-- E.g. public API packages should be made available for usage in other bundles -->
+                        <Export-Package>com.github.dynamicextensionsalfresco.examples.api</Export-Package>
+
+                        <!-- Additional Manifest Headers can be customized -->
+                        <Bundle-DocURL>https://github.com/xenit-eu/example-dynamic-extension</Bundle-DocURL>
+                    </instructions>
+                </configuration>
+            </plugin>
             <!--
                 The Alfresco Maven Plugin contains all the logic to run the extension
                 in an embedded Tomcat with the H2 database.
