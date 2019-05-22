@@ -5,7 +5,7 @@ jdk:
 
 install:
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V -f maven-sdk3/pom.xml
-  - ./gradlew assemble -i --stacktrace
+  - ./gradle-with-plugin/gradlew -b gradle-with-plugin/build.gradle assemble
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
