@@ -3,8 +3,10 @@ language: java
 jdk:
   - oraclejdk8
 
-install:
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V -f maven-sdk3/pom.xml
+install: false
+
+script:
+  - mvn package -f maven-sdk3/pom.xml
   - ./gradle-with-plugin/gradlew -b gradle-with-plugin/build.gradle assemble
 
 before_cache:
