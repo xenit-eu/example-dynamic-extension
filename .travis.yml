@@ -6,8 +6,10 @@ jdk:
 install: false
 
 script:
-  - mvn package -f maven-sdk3/pom.xml
-  - ./gradle-with-plugin/gradlew -b gradle-with-plugin/build.gradle assemble
+  - cd $TRAVIS_BUILD_DIR/maven-sdk3
+  - mvn clean package
+  - cd $TRAVIS_BUILD_DIR/gradle-with-plugin
+  - ./gradlew clean assemble
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock

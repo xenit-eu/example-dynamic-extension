@@ -11,17 +11,6 @@ project.description = 'Example Web Scripts, Actions and Behaviours.'
 
 version = '2.0-SNAPSHOT'
 
-sourceSets {
-    main {
-        java {
-            srcDir '../src/main/java'
-        }
-        resources {
-            srcDir '../src/main/resources'
-        }
-    }
-}
-
 repositories {
     mavenCentral()
     maven {
