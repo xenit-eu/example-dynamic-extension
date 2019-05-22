@@ -3,11 +3,13 @@ language: java
 jdk:
   - oraclejdk8
 
-install: 
+install: false
+
+install:
   - cd $TRAVIS_BUILD_DIR/maven-sdk3
-  - mvn install
+  - mvn clean package
   - cd $TRAVIS_BUILD_DIR/gradle-with-plugin
-  - ./gradlew assemble
+  - ./gradlew clean assemble
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock

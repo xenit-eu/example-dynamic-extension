@@ -34,7 +34,7 @@ configurations {
     install
 }
 
-ext.alfrescoVersion = '5.1.5'
+ext.alfrescoVersion = '5.1.g'
 
 dependencies {
     alfrescoProvided "org.alfresco.surf:spring-webscripts:6.7"
