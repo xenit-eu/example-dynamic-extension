@@ -1,0 +1,2 @@
+Workflow bpmn20.xml files in this class path folder will be automatically (re)registered as a Data Dictionary workflow definition when a Dynamic Extension is deployed.
+Only when the file changes, is it redeployed.

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="com.github.dynamicextensionsalfresco">
+    <process id="serviceTaskExample" name="Dynamic Extensions ServiceTask workflow sample" isExecutable="true">
+        <startEvent id="start" activiti:formKey="wf:submitAdhocTask"></startEvent>
+        <endEvent id="theEnd"></endEvent>
+        <serviceTask activiti:delegateExpression="${example.dynamicextensions.testTask}" id="dynamicServiceTask" name="Dynamic Service Task" activiti:class="com.github.dynamicextensionsalfresco.workflow.activiti.DelegateTask"/>
+        <sequenceFlow id="flow4" sourceRef="start" targetRef="dynamicServiceTask"></sequenceFlow>
+        <userTask id="usertask1" name="User Task" activiti:assignee="admin" activiti:formKey="wf:activitiReviewTask"></userTask>
+        <sequenceFlow id="flow5" sourceRef="dynamicServiceTask" targetRef="usertask1"></sequenceFlow>
+        <sequenceFlow id="flow6" sourceRef="usertask1" targetRef="theEnd"></sequenceFlow>
+    </process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_serviceTaskExample">
+        <bpmndi:BPMNPlane bpmnElement="serviceTaskExample" id="BPMNPlane_serviceTaskExample">
+            <bpmndi:BPMNShape bpmnElement="start" id="BPMNShape_start">
+                <omgdc:Bounds height="35.0" width="35.0" x="30.0" y="200.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="theEnd" id="BPMNShape_theEnd">
+                <omgdc:Bounds height="35.0" width="35.0" x="540.0" y="330.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="dynamicServiceTask" id="BPMNShape_dynamicServiceTask">
+                <omgdc:Bounds height="55.0" width="105.0" x="260.0" y="190.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="usertask1" id="BPMNShape_usertask1">
+                <omgdc:Bounds height="55.0" width="105.0" x="260.0" y="320.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+                <omgdi:waypoint x="65.0" y="217.0"></omgdi:waypoint>
+                <omgdi:waypoint x="260.0" y="217.0"></omgdi:waypoint>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+                <omgdi:waypoint x="312.0" y="245.0"></omgdi:waypoint>
+                <omgdi:waypoint x="312.0" y="320.0"></omgdi:waypoint>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+                <omgdi:waypoint x="365.0" y="347.0"></omgdi:waypoint>
+                <omgdi:waypoint x="540.0" y="347.0"></omgdi:waypoint>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</definitions>

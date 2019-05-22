@@ -10,7 +10,7 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <!-- Dynamic Extensions versions -->
+        <!-- Dynamic Extensions version -->
         <dynamic.extensions.version>2.0.1</dynamic.extensions.version>
         <!-- Version required to pick a particular runtime version of Dynamic Extensions according to the Alfresco version -->
         <dynamic.extensions.alfresco.version>52</dynamic.extensions.alfresco.version>
@@ -168,8 +168,7 @@
                         <!-- Dynamic Extensions AMP -->
                         <moduleDependency>
                             <groupId>eu.xenit</groupId>
-                            <artifactId>alfresco-dynamic-extensions-repo-${dynamic.extensions.alfresco.version}
-                            </artifactId>
+                            <artifactId>alfresco-dynamic-extensions-repo-${dynamic.extensions.alfresco.version}</artifactId>
                             <version>${dynamic.extensions.version}</version>
                             <type>amp</type>
                         </moduleDependency>

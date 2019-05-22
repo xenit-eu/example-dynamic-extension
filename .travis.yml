@@ -3,10 +3,10 @@ language: java
 jdk:
   - oraclejdk8
 
-install: false
-
 install:
   - cd $TRAVIS_BUILD_DIR/maven-sdk3
+  - mvn clean package
+  - cd $TRAVIS_BUILD_DIR/maven-sdk4
   - mvn clean package
   - cd $TRAVIS_BUILD_DIR/gradle-with-plugin
   - ./gradlew clean assemble
