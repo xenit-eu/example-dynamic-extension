@@ -3,12 +3,18 @@ import com.github.dynamicextensionsalfresco.gradle.tasks.InstallBundle
 plugins {
     id 'java'
     id 'idea'
-    id "eu.xenit.de" version "2.0.1"
+
+    // Plugin used to be able to use the 'alfrescoProvided' dependency scope. 
+    // See: https://github.com/xenit-eu/alfresco-gradle-sdk 
     id "eu.xenit.alfresco" version "0.2.0"
+
+    // The Dynamic Extensions Gradle plugin
+    // See: https://github.com/xenit-eu/dynamic-extensions-for-alfresco/blob/master/documentation/Gradle_Plugin.md
+    id "eu.xenit.de" version "2.0.1"
 }
 
-project.description = 'Example Web Scripts, Actions and Behaviours.'
 
+description = 'Dynamic Extensions Example Web Scripts, Actions and Behaviours.'
 version = '2.0-SNAPSHOT'
 
 repositories {
@@ -19,13 +25,15 @@ repositories {
 }
 
 configurations {
+    // Custom configuration added to demonstrate a custom InstallBundle task which can upload OSGi dependencies 
+    // to Dynamic Extensions
     install
 }
 
-ext.alfrescoVersion = '5.0.d'
+ext.alfrescoVersion = '5.1.5'
 
 dependencies {
-    alfrescoProvided "org.springframework.extensions.surf:spring-webscripts:${alfrescoVersion}"
+    alfrescoProvided "org.alfresco.surf:spring-webscripts:6.7"
     alfrescoProvided "org.alfresco:alfresco-data-model:${alfrescoVersion}"
     alfrescoProvided "org.alfresco:alfresco-repository:${alfrescoVersion}"
 
@@ -45,7 +53,7 @@ jar {
     )
 }
 
-// uncomment to override defaults
+// Uncomment the alfrescoDynamicExtensions configuration block to overwrite the default settings
 
 //alfrescoDynamicExtensions {
 //    repository {
@@ -60,7 +68,7 @@ jar {
 //        }
 //    }
 //    versions {
-//        dynamicExtensions = '2.0.0-SNAPSHOT'
+//        dynamicExtensions = '2.0.1'
 //    }
 //}
 
