@@ -1,6 +1,6 @@
 # Alfresco Maven SDK 4 example Dynamic Extensions project
 
-Example project building a custom Dynamic Extensions module with the Alfresco Maven SDK version 3.
+Example project building a custom Dynamic Extensions module with the Alfresco Maven SDK version 4.
 
 ## Building
 The project can be build with the default `mvn package` command.  
@@ -13,18 +13,17 @@ Module Management Tool.
 ## Starting Alfresco
 
 Since this project is based on the `org.alfresco.maven.archetype:alfresco-platform-jar-archetype` Maven 
-archetype, you can use `mvn clean install -DskipTests=true alfresco:run` or `./run.sh` to start it up locally.
+archetype, you can use `./run.sh build_start` to start it up locally.
  
 The starting Alfresco will have Dynamic Extensions and the custom module build by this project, installed. 
 Once started up the dashboard is available on http://localhost:8080/alfresco/s/dynamic-extensions/bundles.
 
 ![Dynamic Extensions Dashboard](assets/Dashboard.png)
 
+For simplicity and as a reference, we'll hereafter include a part of the default README of the used Alfresco archetype. 
+This gives detailed instructions on how to build and setup Alfresco with docker.
 
-
-
-
-#### Old
+# Alfresco ACS JAR Module - SDK 4.0
 
 This is an ACS project for Alfresco SDK 4.0.
 
@@ -50,21 +49,3 @@ All the services of the project are now run as docker containers. The run script
  * `build_test`. Build the whole project, recreate the ACS docker image, start the dockerised environment, execute the integration tests and stop 
  the environment.
  * `test`. Execute the integration tests (the environment must be already started).
-
-# Few things to notice
-
- * No parent pom
- * No WAR projects, the jars are included in the custom docker images
- * No runner project - the Alfresco environment is now managed through [Docker](https://www.docker.com/)
- * Standard JAR packaging and layout
- * Works seamlessly with Eclipse and IntelliJ IDEA
- * JRebel for hot reloading, JRebel maven plugin for generating rebel.xml [JRebel integration documentation]
- * AMP as an assembly
- * Persistent test data through restart thanks to the use of Docker volumes for ACS, ASS and database data
- * Resources loaded from META-INF
- * Web Fragment (this includes a sample servlet configured via web fragment)
-
-# TODO
-
-  * Abstract assembly into a dependency so we don't have to ship the assembly in the archetype
-  * Functional/remote unit tests
