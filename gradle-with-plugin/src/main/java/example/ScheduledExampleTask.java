@@ -1,4 +1,4 @@
-package com.github.dynamicextensionsalfresco.examples;
+package example;
 
 import com.github.dynamicextensionsalfresco.schedule.ScheduledTask;
 import com.github.dynamicextensionsalfresco.schedule.Task;

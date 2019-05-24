@@ -50,10 +50,11 @@ jar {
             'Bundle-Name': 'Example Dynamic Extension',
             'Bundle-Description': project.description,
             'Bundle-DocURL': 'https://github.com/xenit-eu/example-dynamic-extension',
+            'Alfresco-Spring-Configuration': 'eu.xenit.de.example',
 
             // 'Public packages' should be in the 'Export-Package' MANIFEST header to be able to use them in other
             // OSGI bundles
-            'Export-Package': 'com.github.dynamicextensionsalfresco.examples.api'
+            'Export-Package': 'eu.xenit.de.example.api'
     )
 }
 

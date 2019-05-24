@@ -1,12 +1,9 @@
-package com.github.dynamicextensionsalfresco.examples;
-
-import java.io.IOException;
-
-import javax.annotation.Resource;
+package example;
 
 import com.github.dynamicextensionsalfresco.webscripts.annotations.Uri;
 import com.github.dynamicextensionsalfresco.webscripts.annotations.WebScript;
-
+import java.io.IOException;
+import javax.annotation.Resource;
 import org.alfresco.repo.transaction.RetryingTransactionHelper;
 import org.alfresco.repo.transaction.RetryingTransactionHelper.RetryingTransactionCallback;
 import org.springframework.context.ApplicationContext;
@@ -23,35 +20,34 @@ import org.springframework.stereotype.Component;
  * Dynamic Extensions 1.0 milestone 4 expands on the support for injecting named dependencies, by looking up the beans
  * directly in the Alfresco {@link ApplicationContext}. This removes the need for them to be declared as an OSGi
  * service.
- * 
+ *
  * @author Laurens Fridael
- * 
  */
 @Component
-@WebScript
+@WebScript(families = Constants.EXAMPLE_WEBSCRIPTS_FAMILY, baseUri = Constants.EXAMPLE_WEBSCRIPTS_BASE_URI)
 public class NamedDependencyInjectionExample {
 
-  /**
-   * Autowired a named bean from the Alfresco main ApplicationContext using the {@link Resource} annotation.
-   * <p>
-   * In this case we are looking for the {@link RetryingTransactionHelper} named
-   * <code>web.retryingTransactionHelper</code> defined in <code>alfresco/core-services-context.xml</code>.
-   */
-  @Resource(name = "web.retryingTransactionHelper")
-  private RetryingTransactionHelper retryingTransactionHelper;
+    /**
+     * Autowired a named bean from the Alfresco main ApplicationContext using the {@link Resource} annotation.
+     * <p>
+     * In this case we are looking for the {@link RetryingTransactionHelper} named
+     * <code>web.retryingTransactionHelper</code> defined in <code>alfresco/core-services-context.xml</code>.
+     */
+    @Resource(name = "web.retryingTransactionHelper")
+    private RetryingTransactionHelper retryingTransactionHelper;
 
-  @Uri("/dynamic-extensions/examples/transaction")
-  public void transaction(final WebScriptResponse response) throws IOException {
-    performReadonlyTransaction();
-    response.getWriter().write("Performed a read-only transaction operation.");
-  }
+    @Uri("/transaction")
+    public void transaction(final WebScriptResponse response) throws IOException {
+        performReadonlyTransaction();
+        response.getWriter().write("Performed a read-only transaction operation.");
+    }
 
-  private void performReadonlyTransaction() {
-    retryingTransactionHelper.doInTransaction(new RetryingTransactionCallback<Void>() {
+    private void performReadonlyTransaction() {
+        retryingTransactionHelper.doInTransaction(new RetryingTransactionCallback<Void>() {
 
-      public Void execute() throws Throwable {
-        return null;
-      }
-    }, true, true);
-  }
+            public Void execute() throws Throwable {
+                return null;
+            }
+        }, true, true);
+    }
 }

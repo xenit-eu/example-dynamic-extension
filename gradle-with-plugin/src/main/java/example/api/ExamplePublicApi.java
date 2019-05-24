@@ -1,4 +1,4 @@
-package com.github.dynamicextensionsalfresco.examples.api;
+package example.api;
 
 @SuppressWarnings("unused")
 public interface ExamplePublicApi {
