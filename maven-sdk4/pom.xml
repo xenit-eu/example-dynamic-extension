@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>eu.xenit.de</groupId>
     <artifactId>example-dynamic-extensions-module</artifactId>
@@ -24,7 +24,6 @@
         <alfresco.groupId>org.alfresco</alfresco.groupId>
         <alfresco.bomDependencyArtifactId>acs-community-packaging</alfresco.bomDependencyArtifactId>
         <alfresco.platform.version>6.1.2-ga</alfresco.platform.version>
-        <alfresco.share.version>6.1.0-RC3</alfresco.share.version>
 
         <!-- Docker images -->
         <docker.acs.image>alfresco/alfresco-content-repository-community</docker.acs.image>
@@ -135,6 +134,8 @@
                         <Alfresco-Dynamic-Extension>true</Alfresco-Dynamic-Extension>
                         <!-- Indicate which packages should be scanned for Spring components -->
                         <Alfresco-Spring-Configuration>eu.xenit.de.example</Alfresco-Spring-Configuration>
+
+                        <DynamicImport-Package>*</DynamicImport-Package>
 
                         <!-- E.g. public API packages should be made available for usage in other bundles -->
                         <Export-Package>eu.xenit.de.example.api</Export-Package>

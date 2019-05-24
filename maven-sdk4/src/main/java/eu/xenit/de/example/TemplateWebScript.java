@@ -1,18 +1,14 @@
 package eu.xenit.de.example;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 import com.github.dynamicextensionsalfresco.webscripts.annotations.HttpMethod;
 import com.github.dynamicextensionsalfresco.webscripts.annotations.RequestParam;
 import com.github.dynamicextensionsalfresco.webscripts.annotations.Uri;
 import com.github.dynamicextensionsalfresco.webscripts.annotations.WebScript;
-
+import java.util.HashMap;
+import java.util.Map;
 import org.alfresco.service.cmr.repository.TemplateProcessor;
 import org.springframework.extensions.webscripts.DeclarativeWebScript;
 import org.springframework.extensions.webscripts.TemplateProcessorRegistry;
-import org.springframework.extensions.webscripts.WebScriptResponse;
 import org.springframework.stereotype.Component;
 
 /**
@@ -29,7 +25,8 @@ import org.springframework.stereotype.Component;
  * </blockquote>
  * <p>
  * The implementation loads Freemarker FTL templates from OSGi bundle entries. In the context of creating Dynamic
- * Extensions, OSGi bundle entries can be considered to be equivalent to the classpath resources in the OSGi bundle JAR.
+ * Extensions, OSGi bundle entries can be considered to be equivalent to the classpath resources in the OSGi bundle
+ * JAR.
  * <p>
  * The implementation currently has one limitation: Freemarker templates do not have access to <a
  * href="http://wiki.alfresco.com/wiki/Template_Guide#Template_Models">utility objects in the template model</a>, such
@@ -43,35 +40,29 @@ import org.springframework.stereotype.Component;
  * <p>
  * An alternative to rendering templates using this approach, is to work with {@link TemplateProcessorRegistry} and
  * {@link TemplateProcessor} programmatically.
- * 
+ *
  * @author Laurens Fridael
  */
 @Component
-@WebScript
+@WebScript(families = Constants.EXAMPLE_WEBSCRIPTS_FAMILY, baseUri = Constants.EXAMPLE_WEBSCRIPTS_BASE_URI)
 public class TemplateWebScript {
 
-	/**
-	 * This particular Web Script URI endpoint is configured to have a default format of <code>html</code>. In general,
-	 * it is highly recommended to configure a default format, if only to relieve the client from having to specify a
-	 * format explicitly.
-	 * <p>
-	 * The default template for this handler method should be located here: <blockquote>
-	 * <code>nl/runnable/alfresco/examples/HelloWebScript.handleHelloTemplate.get.html.ftl</code> </blockquote>
-	 * <p>
-	 * Per the Web Scripts specification, the client can specify the output format using the <code>format</code> request
-	 * parameter or as an extension of the URL.
-	 * 
-	 * @param name
-	 * @param response
-	 * @return
-	 * @throws IOException
-	 */
-	@Uri(method = HttpMethod.GET, value = "/dynamic-extensions/examples/hello-template", defaultFormat = "html")
-	public Map<String, Object> handleHelloTemplate(@RequestParam final String name, final WebScriptResponse response)
-			throws IOException {
-		final Map<String, Object> model = new HashMap<String, Object>();
-		model.put("name", name);
-		return model;
-	}
+    /**
+     * This particular Web Script URI endpoint is configured to have a default format of <code>html</code>. In general,
+     * it is highly recommended to configure a default format, if only to relieve the client from having to specify a
+     * format explicitly.
+     * <p>
+     * The default template for this handler method should be located here: <blockquote>
+     * <code>nl/runnable/alfresco/examples/HelloWebScript.handleHelloTemplate.get.html.ftl</code> </blockquote>
+     * <p>
+     * Per the Web Scripts specification, the client can specify the output format using the <code>format</code> request
+     * parameter or as an extension of the URL.
+     */
+    @Uri(method = HttpMethod.GET, value = "/hello-template", defaultFormat = "html")
+    public Map<String, Object> handleHelloTemplate(@RequestParam final String name) {
+        final Map<String, Object> model = new HashMap<String, Object>();
+        model.put("name", name);
+        return model;
+    }
 
 }

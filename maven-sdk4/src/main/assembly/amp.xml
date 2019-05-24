@@ -17,6 +17,11 @@
             <source>src/main/resources/alfresco/module/${project.artifactId}/module.properties</source>
             <filtered>true</filtered>
         </file>
+        <!-- Add module-specific log4j.properties configuration at top level in the AMP -->
+        <file>
+            <source>src/main/resources/alfresco/module/${project.artifactId}/log4j.properties</source>
+            <filtered>false</filtered>
+        </file>
     </files>
 
     <!-- Include the project artifact (JAR) in the /lib directory in the AMP, and any 3rd party libraries (JARs)
@@ -36,6 +41,12 @@
             <useProjectArtifact>false</useProjectArtifact>
             <useTransitiveDependencies>true</useTransitiveDependencies>
             <useTransitiveFiltering>true</useTransitiveFiltering>
+            <excludes>
+                <!--
+                    Exclude AMP's since these dependencies are actually just used to include them in the docker setup
+                    -->
+                <exclude>*:amp</exclude>
+            </excludes>
         </dependencySet>
     </dependencySets>
 
