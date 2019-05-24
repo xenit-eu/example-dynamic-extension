@@ -67,7 +67,7 @@ dependencies {
     alfrescoAmp "eu.xenit:alfresco-dynamic-extensions-repo-${dynamicExtensionsAlfrescoVersion}:${dynamicExtensionsVersion}@amp"
 
     // Include our custom module in Alfresco
-    alfrescoDE this.project
+    alfrescoDE files(jar)
 
     if ("61" == "${dynamicExtensionsAlfrescoVersion}") {
         // Workaround for https://issues.alfresco.com/jira/browse/MNT-20557
@@ -81,6 +81,7 @@ dependencies {
 
 jar {
     bnd(
+            // Indicate which packages should be scanned for Spring components
             'Alfresco-Spring-Configuration': 'eu.xenit.de.example',
 
             // 'Public packages' should be in the 'Export-Package' MANIFEST header to be able to use them in other
