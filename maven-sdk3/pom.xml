@@ -121,10 +121,11 @@
                         <!-- Make sure Dynamic Extensions functionalities are enabled in the bundle -->
                         <Alfresco-Dynamic-Extension>true</Alfresco-Dynamic-Extension>
                         <!-- Indicate which packages should be scanned for Spring components -->
-                        <Alfresco-Spring-Configuration>com.github.dynamicextensionsalfresco.examples</Alfresco-Spring-Configuration>
+                        <Alfresco-Spring-Configuration>eu.xenit.de.example</Alfresco-Spring-Configuration>
+                        <DynamicImport-Package>*</DynamicImport-Package>
 
                         <!-- E.g. public API packages should be made available for usage in other bundles -->
-                        <Export-Package>com.github.dynamicextensionsalfresco.examples.api</Export-Package>
+                        <Export-Package>eu.xenit.de.example.api</Export-Package>
 
                         <!-- Additional Manifest Headers can be customized -->
                         <Bundle-DocURL>https://github.com/xenit-eu/example-dynamic-extension</Bundle-DocURL>
