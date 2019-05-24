@@ -1,4 +1,4 @@
-package example;
+package eu.xenit.de.example;
 
 import com.github.dynamicextensionsalfresco.actions.annotations.ActionMethod;
 import com.github.dynamicextensionsalfresco.actions.annotations.ActionParam;

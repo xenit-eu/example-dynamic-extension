@@ -1,4 +1,4 @@
-package example;
+package eu.xenit.de.example;
 
 class Constants {
 

@@ -1,4 +1,4 @@
-package example;
+package eu.xenit.de.example;
 
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.JavaDelegate;

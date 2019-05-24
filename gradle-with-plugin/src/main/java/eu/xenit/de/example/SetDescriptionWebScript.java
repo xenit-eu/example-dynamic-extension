@@ -1,4 +1,4 @@
-package example;
+package eu.xenit.de.example;
 
 import com.github.dynamicextensionsalfresco.webscripts.annotations.RequestParam;
 import com.github.dynamicextensionsalfresco.webscripts.annotations.Uri;

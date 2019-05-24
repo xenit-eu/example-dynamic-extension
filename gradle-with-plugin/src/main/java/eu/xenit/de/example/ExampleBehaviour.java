@@ -1,4 +1,4 @@
-package example;
+package eu.xenit.de.example;
 
 import com.github.dynamicextensionsalfresco.behaviours.annotations.AssociationPolicy;
 import com.github.dynamicextensionsalfresco.behaviours.annotations.Behaviour;

@@ -1,4 +1,4 @@
-package example;
+package eu.xenit.de.example;
 
 import com.github.dynamicextensionsalfresco.schedule.ScheduledTask;
 import com.github.dynamicextensionsalfresco.schedule.Task;

@@ -1,4 +1,4 @@
-package example;
+package eu.xenit.de.example;
 
 import com.github.dynamicextensionsalfresco.annotations.AlfrescoPlatform;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package example.api;
+package eu.xenit.de.example.api;
 
 @SuppressWarnings("unused")
 public interface ExamplePublicApi {
