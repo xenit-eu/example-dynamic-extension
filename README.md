@@ -9,7 +9,9 @@ This project illustrates the use of [Dynamic Extensions for Alfresco](https://gi
 ## Examples
 The project consist of multiple examples, using different build tools. For simplicity, all examples share the same source set, which is available in the `src` directory. 
 
+### [Gradle example using the Dynamic Extensions Gradle plugin](gradle-with-plugin)
+
 ### [Alfresco Maven SDK 3 example](maven-sdk3)
 
-### [Gradle example using the Dynamic Extensions Gradle plugin](gradle-with-plugin)
+### [Alfresco Maven SDK4 example](maven-sdk4)
 
