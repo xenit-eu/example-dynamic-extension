@@ -4,7 +4,12 @@ jdk:
   - oraclejdk8
 
 install:
-  ./gradlew assemble -i --stacktrace
+  - cd $TRAVIS_BUILD_DIR/maven-sdk3
+  - mvn clean package -q
+  - cd $TRAVIS_BUILD_DIR/maven-sdk4
+  - mvn clean package -q
+  - cd $TRAVIS_BUILD_DIR/gradle-with-plugin
+  - ./gradlew clean assemble
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock

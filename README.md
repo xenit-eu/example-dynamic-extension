@@ -1,34 +1,17 @@
-Example Dynamic Extension
-=========================
+# Dynamic Extensions example projects
 
 [![Build Status](https://travis-ci.org/xenit-eu/example-dynamic-extension.svg)](https://travis-ci.org/xenit-eu/example-dynamic-extension)
 
-About this project
-------------------
+## About this project
 
-This project illustrates the use of <a href="https://github.com/xenit-eu/dynamic-extensions-for-alfresco">Dynamic Extensions for Alfresco</a>. Dynamic Extensions brings rapid development of Java repository extensions extensions to Alfresco. This project contains example Web Scripts, Actions and Behaviours.
+This project illustrates the use of [Dynamic Extensions for Alfresco](https://github.com/xenit-eu/dynamic-extensions-for-alfresco). Dynamic Extensions brings rapid development of Java repository extensions extensions to Alfresco. This project contains example Web Scripts, Actions and Behaviours.
 
-Building using Gradle
----------------------
+## Examples
+The project consist of multiple examples, using different build tools. For simplicity, all examples share the same source set, which is available in the `src` directory. 
 
-Build this project using <a href="http://www.gradle.org/">Gradle</a>:
+### [Gradle example using the Dynamic Extensions Gradle plugin](gradle-with-plugin)
 
-```
-./gradlew build # nix
-./gradle.bat build # Windows
-```
+### [Alfresco Maven SDK 3 example](maven-sdk3)
 
-This creates a JAR in `build/libs` ready to be hot-deployed to an Alfresco repository with Dynamic Extensions enabled.
-
-Run `./gradlew installBundle` instead to build and deploy live to a running repository.
-
-
-Building using Maven (alternative)
----------------------
-
-```
-mvn package
-```
-
-This creates a JAR in `target` ready to be hot-deployed to an Alfresco repository with Dynamic Extensions enabled.
+### [Alfresco Maven SDK4 example](maven-sdk4)
 

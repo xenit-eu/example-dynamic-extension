@@ -1,0 +1,138 @@
+import com.github.dynamicextensionsalfresco.gradle.tasks.InstallBundle
+
+plugins {
+    id 'java'
+    id 'idea'
+
+    // Plugin used to be able to use the 'alfrescoProvided' dependency scope. 
+    // See: https://github.com/xenit-eu/alfresco-gradle-sdk#the-euxenitalfresco-plugin
+    id "eu.xenit.alfresco" version "0.2.0"
+
+    // Plugin used to assemble the project into an Alfresco Module Package
+    // See: https://github.com/xenit-eu/alfresco-gradle-sdk#the-euxenitamp-plugin
+    id "eu.xenit.amp" version "0.2.0"
+
+    // Plugin used to start an Alfresco for testing purposes
+    // See: https://github.com/xenit-eu/alfresco-docker-gradle-plugin
+    id "eu.xenit.docker-alfresco" version "4.0.3"
+
+    // The Dynamic Extensions Gradle plugin
+    // See: https://github.com/xenit-eu/dynamic-extensions-for-alfresco/blob/master/documentation/Gradle_Plugin.md
+    id "eu.xenit.de" version "2.0.1"
+}
+
+
+description = 'Dynamic Extensions Example Web Scripts, Actions and Behaviours.'
+version = '2.0-SNAPSHOT'
+
+ext {
+    dynamicExtensionsVersion = '2.0.1'
+
+    dynamicExtensionsAlfrescoVersion = "61"
+    alfrescoVersion = '6.1.2-ga'
+    shareVersion = "6.1.0"
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://artifacts.alfresco.com/nexus/content/groups/public/"
+    }
+}
+
+configurations {
+    // Custom configuration added to demonstrate a custom InstallBundle task which can upload OSGi dependencies 
+    // to Dynamic Extensions
+    install
+}
+
+dependencies {
+    alfrescoProvided "org.alfresco.surf:spring-webscripts:6.20"
+    alfrescoProvided "org.alfresco:alfresco-data-model:8.25"
+    alfrescoProvided "org.alfresco:alfresco-repository:7.43"
+
+    // Note: SLF4J is already included in Alfresco, this is just included to demonstrate a custom installBundle task
+    install 'org.slf4j:slf4j-api:1.7.26'
+
+
+    /*
+    Following dependencies are not required to build the bundle or amp, but are used to setup an Alfresco for
+    demo purposes.
+    See https://github.com/xenit-eu/alfresco-docker-gradle-plugin for more information
+    */
+
+    baseAlfrescoWar "org.alfresco:content-services-community:${alfrescoVersion}@war"
+
+    // Include the Dynamic Extensions runtime AMP in Alfresco
+    alfrescoAmp "eu.xenit:alfresco-dynamic-extensions-repo-${dynamicExtensionsAlfrescoVersion}:${dynamicExtensionsVersion}@amp"
+
+    // Include our custom module in Alfresco
+    alfrescoDE files(jar)
+
+    if ("61" == "${dynamicExtensionsAlfrescoVersion}") {
+        // Workaround for https://issues.alfresco.com/jira/browse/MNT-20557
+        alfrescoAmp "eu.xenit.alfresco:alfresco-hotfix-MNT-20557:1.0.1@amp"
+    }
+
+//    alfrescoDE project(':integration-tests:test-bundle')
+
+    baseShareWar "org.alfresco:share:${shareVersion}@war"
+}
+
+jar {
+    bnd(
+            // Indicate which packages should be scanned for Spring components
+            'Alfresco-Spring-Configuration': 'eu.xenit.de.example',
+
+            // 'Public packages' should be in the 'Export-Package' MANIFEST header to be able to use them in other
+            // OSGI bundles
+            'Export-Package': 'eu.xenit.de.example.api'
+    )
+}
+
+// Uncomment the alfrescoDynamicExtensions configuration block to overwrite the default settings
+
+alfrescoDynamicExtensions {
+//    repository {
+//        endpoint {
+//            host = project.hasProperty('hostname') ? project.hostname : 'localhost'
+//            port = '8080'
+//            serviceUrl = '/alfresco/service'
+//        }
+//        authentication {
+//            username = project.hasProperty('username') ? project.username : 'admin'
+//            password = project.hasProperty('password') ? project.password : 'admin'
+//        }
+//    }
+    versions {
+        dynamicExtensions = "${dynamicExtensionsVersion}"
+    }
+}
+
+task installDependencies(type: InstallBundle) {
+    files = configurations.install
+}
+
+
+
+/* Following configuration is not required to build the bundle or amp, but is used to setup an Alfresco for demo purposes. */
+
+dockerAlfresco {
+    baseImage = "alfresco/alfresco-content-repository-community:${alfrescoVersion}"
+
+    leanImage = true
+
+    dockerBuild {
+        automaticTags = false
+    }
+}
+
+dockerCompose {
+    useComposeFiles = [project.projectDir.toString() + '/src/test/resources/compose/docker-compose.yml']
+
+    removeVolumes = true
+}
+
+wrapper {
+    gradleVersion = "5.4.1"
+}
