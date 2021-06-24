@@ -70,10 +70,8 @@ dependencies {
     // Include our custom module in Alfresco
     alfrescoDE files(jar)
 
-    if ("61" == "${dynamicExtensionsAlfrescoVersion}" || "62" == "${dynamicExtensionsAlfrescoVersion}") {
-        // Workaround for https://issues.alfresco.com/jira/browse/MNT-20557
-        alfrescoAmp "eu.xenit.alfresco:alfresco-hotfix-MNT-20557:1.0.2@amp"
-    }
+    // Workaround for https://issues.alfresco.com/jira/browse/MNT-20557
+    alfrescoAmp "eu.xenit.alfresco:alfresco-hotfix-MNT-20557:1.0.2@amp"
 
 //    alfrescoDE project(':integration-tests:test-bundle')
 
